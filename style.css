@@ -2,7 +2,7 @@
  * Calendar
  */
 .calendar {
-  width: 30rem;
+  width: 100%;
   margin: 3rem auto;
 }
 .calendar__control {
@@ -20,6 +20,7 @@
   text-align: center;
 }
 .calendar__view {
+  width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
   margin: auto;
@@ -31,8 +32,8 @@
   border-top: 1px solid #999999;
 }
 .calendar__view th, .calendar__view td {
-  width: 60px;
-  height: 45px;
+  width: 13.5%;
+  height: 6rem;
   border-right: 1px solid #999999;
   text-align: center;
 }

@@ -109,21 +109,23 @@ export default class Calendar {
       for (let i = 0; i < 7; i++) {
         //一日の列を作成
         const td = document.createElement('td');
+        const div = document.createElement('div');
         if (i < startDay && j === 0 || dayCount > endDayCount) {
           // 一週目で、初日の曜日に達するまでは空白
           // もしくは末日の日にちに達してからは空白
-          td.innerHTML = '&nbsp;';
+          div.innerHTML = '&nbsp;';
         } else {
           // 日にちを記載
-          td.innerHTML = `<span>${dayCount}</span>`;
+          div.innerHTML = `<span>${dayCount}</span>`;
           // 日にち・曜日データをセット
           const date = this._parseDate(year, month, dayCount);
-          td.dataset.date = date;
+          div.dataset.date = date;
           const week = i;
-          td.dataset.week = week;
+          div.dataset.week = week;
           // 翌日へ
           dayCount++;
         }
+        td.appendChild(div);
         tr.appendChild(td);
       }
       this._body.appendChild(tr);
