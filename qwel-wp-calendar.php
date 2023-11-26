@@ -37,10 +37,14 @@ spl_autoload_register(
 );
 
 class Qwel_WP_Calendar {
-  use \Qwel_WP_Calendar\Scripts,
+  use \Qwel_WP_Calendar\Supports,
+		\Qwel_WP_Calendar\Scripts,
     \Qwel_WP_Calendar\Shortcodes;
 		
 	public function __construct() {
+		// テーマサポート機能
+		$this->setup_theme();
+    
     // CSS, JSファイルを読み込み (フロント)
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
     
