@@ -9,6 +9,10 @@ trait Supports {
     
     // REST API にて表示
     add_action( 'rest_api_init', [ $this, 'register_calendar_tax' ] );
+
+    // カレンダーの予約投稿を公開
+    add_action( 'save_post', [ $this, 'publish_future_schedule' ], 99 );
+    add_action( 'edit_post', [ $this, 'publish_future_schedule' ], 99 );
   }
 
   public function register_calendar_as_post_type() {
@@ -54,6 +58,14 @@ trait Supports {
   public function get_calendar_tax( $object ) {
     $tax = get_the_terms( $object[ 'id' ], 'color' );
     return $tax;
+  }
+
+  public function publish_future_schedule() {
+    global $wpdb;
+    $sql = 'UPDATE `'.$wpdb->prefix.'posts` ';
+    $sql .= 'SET post_status = "publish" ';
+    $sql .= 'WHERE post_status = "future" AND post_type = "calendar"';
+    $wpdb->get_results( $sql );
   }
 
 }
