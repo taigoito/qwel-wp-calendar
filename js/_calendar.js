@@ -110,13 +110,14 @@ export default class Calendar {
         //一日の列を作成
         const td = document.createElement('td');
         const div = document.createElement('div');
+        div.classList.add('calendar__schedule');
         if (i < startDay && j === 0 || dayCount > endDayCount) {
           // 一週目で、初日の曜日に達するまでは空白
           // もしくは末日の日にちに達してからは空白
           div.innerHTML = '&nbsp;';
         } else {
           // 日にちを記載
-          div.innerHTML = `<span>${dayCount}</span>`;
+          div.innerHTML = `<p>${dayCount}</p>`;
           // 日にち・曜日データをセット
           const date = this._parseDate(year, month, dayCount);
           div.dataset.date = date;
