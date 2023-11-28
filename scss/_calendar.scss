@@ -82,6 +82,21 @@
         color: #ffffff;
         font-size: 0.875rem;
       }
+
+      &.--cyan {
+        background-color: cyan;
+        color: #333333;
+      }
+
+      &.--magenta {
+        background-color: magenta;
+        color: #333333;
+      }
+
+      &.--yellow {
+        background-color: yellow;
+        color: #333333;
+      }
     }
   }
 }

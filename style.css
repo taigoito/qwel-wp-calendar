@@ -71,3 +71,15 @@
   color: #ffffff;
   font-size: 0.875rem;
 }
+.calendar__schedule p.--cyan {
+  background-color: cyan;
+  color: #333333;
+}
+.calendar__schedule p.--magenta {
+  background-color: magenta;
+  color: #333333;
+}
+.calendar__schedule p.--yellow {
+  background-color: yellow;
+  color: #333333;
+}

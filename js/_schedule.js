@@ -24,18 +24,24 @@ export default class Schedule extends Calendar {
   render(data) {
     data.forEach((dt) => {
       const status = dt.status;
-      if (status !== 'publish') return;
+      if (status !== 'publish' && status !== 'future') return;
 
       const date = dt.date.slice(0, 10);
       const title = dt.title.rendered;
       //const content = dt.content.rendered;
       //const link = dt.link;
+      const taxonomy = dt.taxonomy;
 
       const elem = document.querySelector(`[data-date="${date}"]`);
       if (!elem) return;
 
       const p = document.createElement('p');
       p.textContent = title;
+      if (taxonomy && taxonomy.length > 0) {
+        taxonomy.forEach((tax) => {
+          p.classList.add(`--${tax.slug}`);
+        });
+      }
       elem.appendChild(p);
 
     });
