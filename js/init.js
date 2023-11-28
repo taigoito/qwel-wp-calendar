@@ -4,7 +4,14 @@
  * Location: Fukui, Japan
  */
 
-const url = '/wp-json/wp/v2/calendar';
+// Config
+import { user, pw } from './config.js';
+
+const url = '/wp-json/wp/v2/calendar?status=publish+future';
 
 import Schedule from './_schedule.js';
-new Schedule({ url: url });
+new Schedule({
+  url: url,
+  user: user,
+  pw: pw
+});
