@@ -9,18 +9,11 @@ import Calendar from './_calendar.js';
 export default class Schedule extends Calendar {
   makeCalendar(year, month) {
     super.makeCalendar(year, month);
-    this.fetch(this.options.url, this.options.user, this.options.pw);
+    this.fetch(this.options.url);
   }
 
-  async fetch(url, user, pw) {
-    const res = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Basic ${window.btoa(user + ":" + pw)}`,
-      },
-      body: JSON.stringify(data)
-    });
+  async fetch(url) {
+    const res = await fetch(`${url}`);
     const data = await res.json();
 
     this.render(data);
