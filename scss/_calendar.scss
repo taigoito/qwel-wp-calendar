@@ -23,6 +23,8 @@
   }
 
   &__view {
+    border-collapse: collapse;
+    border-spacing: 0;
     margin: auto;
 
     tr {

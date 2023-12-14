@@ -27,10 +27,10 @@ export default class Calendar {
     this._head = document.getElementById('calendarHead');
     this._body = document.getElementById('calendarBody');
 
-    // 現在年月を取得
+    // 年月の設定
     const today = new Date();
-    this.year = today.getFullYear();
-    this.month = today.getMonth();
+    this.year = this._elem.dataset.year - 0 || today.getFullYear();
+    this.month = this._elem.dataset.month - 0 || today.getMonth();
 
     // カレンダーを作成
     this.makeCalendar(this.year, this.month);
