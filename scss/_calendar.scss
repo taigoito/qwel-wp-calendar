@@ -64,6 +64,10 @@
     }
 
     td {
+      &.--holiday {
+        color: red;
+      }
+      
       &[data-state="0"] {
         background: rgba(255, 128, 128, .5);
       }

@@ -109,6 +109,9 @@ button, input, select, textarea {
 .calendar__view th:last-child, .calendar__view td:last-child {
   color: blue;
 }
+.calendar__view td.--holiday {
+  color: red;
+}
 .calendar__view td[data-state="0"] {
   background: rgba(255, 128, 128, 0.5);
 }

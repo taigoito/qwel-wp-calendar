@@ -39,12 +39,22 @@ export default class Calendar {
     // 年月を修正
     this.month = (this.month + month) % 12;
     this.year += year;
+    
+    // 休日データを取得
+    this.holidays = this._fetchHolidays();
 
     // カレンダーを作成
     this.makeCalendar(this.year, this.month);
 
     // 月送りの操作受付
     this._handleEvents();
+  }
+
+  async _fetchHolidays() {
+    const url = 'https://holidays-jp.github.io/api/v1/date.json';
+    const res = await fetch(`${url}`);
+    return await res.json();
+
   }
 
   _handleEvents() {
@@ -73,13 +83,13 @@ export default class Calendar {
     });
   }
 
-  makeCalendar(year, month) {
+  async makeCalendar(year, month) {
     // テキストラベルを変更
     this._changeLabels(year, month);
     // Headに曜日を記載
     this._makeCalendarHead();
     // Bodyに日にちを記載
-    this._makeCalendarBody(year, month);
+    this._makeCalendarBody(year, month, await this.holidays);
   }
 
   _changeLabels(year, month) {
@@ -108,7 +118,7 @@ export default class Calendar {
     this._head.appendChild(tr);
   }
 
-  _makeCalendarBody(year, month) {
+  _makeCalendarBody(year, month, holidays) {
     const startDate = new Date(year, month); // 月の初日
     const startDay = startDate.getDay(); // 初日の曜日
     const endDate = new Date(year, month + 1, 0); // 月の末日
@@ -137,6 +147,11 @@ export default class Calendar {
           td.dataset.date = date;
           const week = i;
           td.dataset.week = week;
+          // 祝日クラスを付与
+          if (date in holidays) {
+            td.classList.add('--holiday');
+            td.setAttribute('title', holidays[date]);
+          }
           // 翌日へ
           dayCount++;
         }
