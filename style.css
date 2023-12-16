@@ -56,6 +56,9 @@
   text-align: left;
   line-height: 1.2;
 }
+.calendar__schedule.--holiday p:first-child {
+  color: red;
+}
 .calendar__schedule p {
   display: inline-block;
   width: 6.75rem; /* customize to use */

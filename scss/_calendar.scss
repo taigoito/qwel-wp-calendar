@@ -67,6 +67,10 @@
     text-align: left;
     line-height: 1.2;
 
+    &.--holiday p:first-child {
+      color: red;
+    }
+
     p {
       display: inline-block;
       width: 6.75rem; /* customize to use */
