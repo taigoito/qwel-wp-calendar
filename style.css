@@ -98,3 +98,6 @@ button, input, select, textarea {
 .calendar__view th:last-child, .calendar__view td:last-child {
   color: blue;
 }
+.calendar__view td.--holiday {
+  color: red;
+}
