@@ -7,8 +7,14 @@ trait Supports {
     // カスタム投稿タイプ, タクソノミーを登録
     add_action( 'init', [ $this, 'register_calendar_as_post_type' ] );
     
+    // カスタムフィールドを作成
+    add_action( 'admin_menu', [ $this, 'create_meta_boxes' ] );
+
+    // カスタムフィールドの値を保存
+    add_action( 'save_post', [ $this, 'save_meta_boxes' ] );
+    
     // REST API にて表示
-    add_action( 'rest_api_init', [ $this, 'register_calendar_tax' ] );
+    add_action( 'rest_api_init', [ $this, 'register_calendar_attrs' ] );
   }
 
   public function register_calendar_as_post_type() {
@@ -45,15 +51,58 @@ trait Supports {
     ] );
   }
 
-  public function register_calendar_tax() {
-    register_rest_field( 'calendar', 'taxonomy', [
-      'get_callback' => [ $this, 'get_calendar_tax' ]
+  public function create_meta_boxes() {
+    add_meta_box(
+      'calendar-setting',
+      'カレンダー設定',
+      [ $this, 'insert_meta_boxes' ],
+      'calendar'
+    );
+  }
+
+  public function insert_meta_boxes() {
+    global $post;
+    $post_date = get_the_date( 'Y-m-d', $post->ID );
+    $start_date = get_post_meta( $post->ID, 'start_date', true );
+    if ( !$start_date ) $start_date = $post_date;
+    $end_date = get_post_meta( $post->ID, 'end_date', true );
+    if ( !$end_date ) $end_date = $post_date;
+?>
+  
+<form method="post" action="admin.php?page=site_settings">
+  <label for="startDate">開始日: </label>
+  <input id="startDate" type="date" name="startDate" value="<?php echo $start_date ?>">
+  <label for="endDate">終了日: </label>
+  <input id="endDate" type="date" name="endDate" value="<?php echo $end_date ?>">
+</form>
+  
+<?php
+  }
+
+  public function save_meta_boxes( $post_id ) {
+    if ( isset( $_POST[ 'startDate' ] ) ) {
+      update_post_meta( $post_id, 'start_date', $_POST[ 'startDate' ] );
+    }
+    if ( isset( $_POST[ 'endDate' ] ) ) {
+      update_post_meta( $post_id, 'end_date', $_POST[ 'endDate' ] );
+    }
+  }
+
+  public function register_calendar_attrs() {
+    register_rest_field( 'calendar', 'attributes', [
+      'get_callback' => [ $this, 'get_calendar_attrs' ]
     ] );
   }
 
-  public function get_calendar_tax( $object ) {
-    $tax = get_the_terms( $object[ 'id' ], 'color' );
-    return $tax;
+  public function get_calendar_attrs( $object ) {
+    $start_date = get_post_meta( $object[ 'id' ], 'start_date', true );
+    $end_date = get_post_meta( $object[ 'id' ], 'end_date', true );
+    $colors = get_the_terms( $object[ 'id' ], 'color' );
+    return [
+      'start_date' => $start_date,
+      'end_date'   => $end_date,
+      'colors'     => $colors
+    ];
   }
 
 }
