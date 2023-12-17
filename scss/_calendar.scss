@@ -2,13 +2,14 @@
  * Calendar
  */
 
+$calendarWidth:      min(100%, 1152px); // (162*7)pxピッタリだと枠線が無くなる
 $calendarUnit:       clamp(108px, 14vw, 162px);
-$calendarRowHeight:  clamp(8rem, 12.8vw, 9.6rem); // 1000px時 12.8vw = 8rem
+$calendarRowHeight:  clamp(128px, 12.8vw, 144px); // 1000px時 12.8vw = 128px
 $calendarFontSize:   clamp(12px, 1.2vw, 14.4px); // 1000px時 1.2vw = 12px
 
 .calendar {
-  width: min(100%, 72rem);
-  margin: 3rem auto;
+  width: $calendarWidth;
+  margin: 48px auto;
 
   &__control {
     display: flex;
@@ -16,18 +17,18 @@ $calendarFontSize:   clamp(12px, 1.2vw, 14.4px); // 1000px時 1.2vw = 12px
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 0.75rem;
+    margin-bottom: 12px;
   }
 
   &__prev, &__next {
     display: block;
-    width: 4.5rem;
-    font-size: 0.875rem;
+    width: 72px;
+    font-size: 14px;
     text-align: center;
   }
 
   &__wrap {
-    width: min(100%, 72rem);
+    width: $calendarWidth;
     margin: 0 auto;
     overflow: auto;
   }

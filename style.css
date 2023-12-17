@@ -2,8 +2,8 @@
  * Calendar
  */
 .calendar {
-  width: min(100%, 72rem);
-  margin: 3rem auto;
+  width: min(100%, 1152px);
+  margin: 48px auto;
 }
 .calendar__control {
   display: flex;
@@ -11,16 +11,16 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 0.75rem;
+  margin-bottom: 12px;
 }
 .calendar__prev, .calendar__next {
   display: block;
-  width: 4.5rem;
-  font-size: 0.875rem;
+  width: 72px;
+  font-size: 14px;
   text-align: center;
 }
 .calendar__wrap {
-  width: min(100%, 72rem);
+  width: min(100%, 1152px);
   margin: 0 auto;
   overflow: auto;
 }
@@ -50,7 +50,7 @@
   color: blue;
 }
 .calendar__view td {
-  height: clamp(8rem, 12.8vw, 9.6rem);
+  height: clamp(128px, 12.8vw, 144px);
 }
 .calendar__schedule {
   width: 100%;
