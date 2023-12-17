@@ -31,10 +31,12 @@ trait Shortcodes {
         <span id="calendarCurrentText"></span>
         <a id="calendarNext" class="calendar__next" href="#"><span id="calendarNextText"></span> &gt;</a>
       </div>
-      <table class="calendar__view">
-        <thead id="calendarHead"></thead>
-        <tbody id="calendarBody"></tbody>
-      </table>
+      <div class="calendar__wrap">
+        <table class="calendar__view">
+          <thead id="calendarHead"></thead>
+          <tbody id="calendarBody"></tbody>
+        </table>
+      </div>
     </div>
     DOC;
 
