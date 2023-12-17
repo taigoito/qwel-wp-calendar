@@ -93,8 +93,16 @@ button, input, select, textarea {
 }
 .calendar__view th:first-child, .calendar__view td:first-child {
   border-left: 1px solid #999999;
+}
+.calendar:not(.--startOnMon) th:first-child, .calendar:not(.--startOnMon) td:first-child {
   color: red;
 }
-.calendar__view th:last-child, .calendar__view td:last-child {
+.calendar:not(.--startOnMon) th:last-child, .calendar:not(.--startOnMon) td:last-child {
+  color: blue;
+}
+.calendar.--startOnMon th:nth-child(7), .calendar.--startOnMon td:nth-child(7) {
+  color: red;
+}
+.calendar.--startOnMon th:nth-child(6), .calendar.--startOnMon td:nth-child(6) {
   color: blue;
 }
