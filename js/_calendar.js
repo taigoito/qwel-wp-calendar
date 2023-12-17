@@ -13,9 +13,15 @@ export default class Calendar {
     this._months = [
       '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'
     ];
-    this._weeks = [
-      '日', '月', '火', '水', '木', '金', '土'
-    ];
+    if (this.options.startOnMon) {
+      this._weeks = [
+        '月', '火', '水', '木', '金', '土', '日'
+      ];
+    } else {
+      this._weeks = [
+        '日', '月', '火', '水', '木', '金', '土'
+      ];
+    }
 
     // 要素の定義
     this._elem = document.getElementById('calendar');
@@ -26,6 +32,10 @@ export default class Calendar {
     this._nextText = document.getElementById('calendarNextText');
     this._head = document.getElementById('calendarHead');
     this._body = document.getElementById('calendarBody');
+
+    if (this.options.startOnMon) {
+      this._elem.classList.add('--startOnMon');
+    }
 
     // 年月の設定
     const today = new Date();
@@ -104,7 +114,11 @@ export default class Calendar {
 
   _makeCalendarBody(year, month, holidays) {
     const startDate = new Date(year, month); // 月の初日
-    const startDay = startDate.getDay(); // 初日の曜日
+    let startDay = startDate.getDay(); // 初日の曜日
+    if (this.options.startOnMon) {
+      startDay += 6;
+      startDay %= 7;
+    }
     const endDate = new Date(year, month + 1, 0); // 月の末日
     const endDayCount = endDate.getDate(); // 末日の日にち
     let dayCount = 1; // 日にちをカウント

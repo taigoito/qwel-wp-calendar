@@ -7,4 +7,4 @@
 const url = '/wp-json/wp/v2/calendar';
 
 import Schedule from './_schedule.js';
-new Schedule({ url: url });
+new Schedule({ url: url, startOnMon: true });

@@ -55,11 +55,6 @@ $calendarFontSize:   clamp(12px, 1.2vw, 14.4px); // 1000px時 1.2vw = 12px
 
       &:first-child {
         border-left: 1px solid #999999;
-        color: red;
-      }
-    
-      &:last-child {
-        color: blue;
       }
     }
 
@@ -108,6 +103,30 @@ $calendarFontSize:   clamp(12px, 1.2vw, 14.4px); // 1000px時 1.2vw = 12px
       &.--yellow {
         background-color: yellow;
         color: #333333;
+      }
+    }
+  }
+
+  &:not(.--startOnMon) {
+    th, td {
+      &:first-child {
+        color: red;
+      }
+    
+      &:last-child {
+        color: blue;
+      }
+    }
+  }
+
+  &.--startOnMon {
+    th, td {
+      &:nth-child(7) {
+        color: red;
+      }
+    
+      &:nth-child(6) {
+        color: blue;
       }
     }
   }
