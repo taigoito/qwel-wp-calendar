@@ -2,8 +2,10 @@
  * Calendar
  */
 
+$calendarUnit: clamp(108px, 14vw, 162px);
+
 .calendar {
-  width: 30rem;
+  width: min(100%, 72rem);
   margin: 3rem auto;
   padding-bottom: 1.5rem;
 
@@ -26,18 +28,27 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: .75rem;
+    margin-bottom: 0.75rem;
   }
 
   &__prev, &__next {
     display: block;
     width: 4.5rem;
-    font-size: 87.5%;
+    font-size: 0.875rem;
     text-align: center;
   }
 
+  &__wrap {
+    width: min(100%, 72rem);
+    margin: 0 auto;
+    overflow: auto;
+  }
+
   &__view {
-    margin: auto;
+    width: calc(#{$calendarUnit} * 7);
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 auto;
 
     tr {
       border-bottom: 1px solid #999999;
@@ -48,8 +59,8 @@
     }
 
     th, td {
-      width: 60px;
-      height: 45px;
+      width: $calendarUnit;
+      height: calc(#{$calendarUnit} * 3 / 4);
       border-right: 1px solid #999999;
       text-align: center;
 
