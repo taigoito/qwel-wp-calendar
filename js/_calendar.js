@@ -6,11 +6,18 @@
 
 export default class Calendar {
   constructor(options = {}) {
-    // 日本語表記の定義
+    // 表記の定義
     // 0: 1月, 1: 2月...なので注意
-    this._months = [
-      '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'
-    ];
+    if (this.options.formatJP) {
+      this._months = [
+        '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'
+      ];
+    } else {
+      this._months = [
+        '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
+      ];
+    }
+
     if (this.options.startOnMon) {
       this._weeks = [
         '月', '火', '水', '木', '金', '土', '日'
@@ -103,14 +110,19 @@ export default class Calendar {
   }
 
   _changeLabels(year, month) {
+    const joint = this.options.formatJP ? '年' : '.';
     if (this._prevText) {
-      this._prevText.textContent = this._months[(month + this._months.length - 1) % this._months.length];
+      const prevMonth = `${(month + this._months.length - 1) % this._months.length}`;
+      const prevYear = prevMonth < 11 ? year : year - 1;
+      this._prevText.textContent = `${prevYear}${joint}${this._months[prevMonth]}`;
     }
     if (this._currentText) {
-      this._currentText.textContent = `${year}年 ${this._months[month]}`;
+      this._currentText.textContent = `${year}${joint}${this._months[month]}`;
     }
     if (this._nextText) {
-      this._nextText.textContent = this._months[(month + this._months.length + 1) % this._months.length];
+      const nextMonth = `${(month + this._months.length + 1) % this._months.length}`;
+      const nextYear = nextMonth > 0 ? year : year + 1;
+      this._nextText.textContent = `${nextYear}${joint}${this._months[nextMonth]}`;
     }
   }
 

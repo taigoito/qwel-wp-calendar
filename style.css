@@ -83,7 +83,7 @@ button, input, select, textarea {
 }
 .calendar__prev, .calendar__next {
   display: block;
-  width: 4.5rem;
+  width: 6rem;
   font-size: 0.875rem;
   text-align: center;
 }
