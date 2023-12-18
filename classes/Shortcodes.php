@@ -28,7 +28,7 @@ trait Shortcodes {
     <div id="calendar" class="calendar" data-year="{$atts[ 'year' ]}" data-month="{$atts[ 'month' ]}">
       <div class="calendar__control">
         <a id="calendarPrev" class="calendar__prev" href="#">&lt; <span id="calendarPrevText"></span></a>
-        <span id="calendarCurrentText"></span>
+        <span id="calendarCurrentText" class="calendar__current"></span>
         <a id="calendarNext" class="calendar__next" href="#"><span id="calendarNextText"></span> &gt;</a>
       </div>
       <div class="calendar__wrap">

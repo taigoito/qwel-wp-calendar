@@ -15,7 +15,7 @@
 }
 .calendar__prev, .calendar__next {
   display: block;
-  width: 72px;
+  width: 96px;
   font-size: 14px;
   text-align: center;
 }
