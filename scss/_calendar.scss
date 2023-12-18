@@ -6,6 +6,10 @@ $calendarWidth:      min(100%, 1152px); // (162*7)pxピッタリだと枠線が�
 $calendarUnit:       clamp(108px, 14vw, 162px);
 $calendarRowHeight:  clamp(128px, 12.8vw, 144px); // 1000px時 12.8vw = 128px
 $calendarFontSize:   clamp(12px, 1.2vw, 14.4px); // 1000px時 1.2vw = 12px
+$calendarBaseColor:  #c4e4c4;
+$calendarBorder:     2px solid $calendarBaseColor;
+$calendarSunColor:   #ef8f8f;
+$calendarSatColor:   #8f8fef;
 
 .calendar {
   width: $calendarWidth;
@@ -20,11 +24,19 @@ $calendarFontSize:   clamp(12px, 1.2vw, 14.4px); // 1000px時 1.2vw = 12px
     margin-bottom: 12px;
   }
 
+  &__current {
+    font-weight: 700;
+    font-size: 20px;
+    transform: scaleY(1.2);
+  }
+
   &__prev, &__next {
     display: block;
     width: 96px;
-    font-size: 14px;
+    font-weight: 700;
+    font-size: 16px;
     text-align: center;
+    transform: scaleY(1.2);
   }
 
   &__wrap {
@@ -34,28 +46,33 @@ $calendarFontSize:   clamp(12px, 1.2vw, 14.4px); // 1000px時 1.2vw = 12px
   }
 
   &__view {
-    table-layout: fixed;
+    table-layout: fixed; // Fix table layout
     width: calc(#{$calendarUnit} * 7);
     border-collapse: collapse;
     border-spacing: 0;
     margin: 0 auto;
 
     tr {
-      border-bottom: 1px solid #999999;
+      border-bottom: $calendarBorder;
 
       &:first-child {
-        border-top: 1px solid #999999;
+        border-top: $calendarBorder;
       }
     }
 
     th, td {
+      box-sizing: border-box; // Reset
       width: $calendarUnit;
-      border-right: 1px solid #999999;
+      border-right: $calendarBorder;
       text-align: center;
 
       &:first-child {
-        border-left: 1px solid #999999;
+        border-left: $calendarBorder;
       }
+    }
+
+    th {
+      background-color: $calendarBaseColor;
     }
 
     td {
@@ -72,17 +89,22 @@ $calendarFontSize:   clamp(12px, 1.2vw, 14.4px); // 1000px時 1.2vw = 12px
     line-height: 1.2;
 
     &.--holiday p:first-child {
-      color: red;
+      color: $calendarSunColor;
     }
 
     p {
       display: inline-block;
-      width: calc(100% - 6px);
+      width: calc(100% - 12px); // Subtract the padding. In some cases it is not necessary.
       margin: 0;
       padding: 3px;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+
+      &:first-child {
+        font-weight: 700;
+        text-align: right;
+      }
 
       &:not(:first-child) {
         border-radius: 3px;
@@ -90,43 +112,41 @@ $calendarFontSize:   clamp(12px, 1.2vw, 14.4px); // 1000px時 1.2vw = 12px
         color: #ffffff;
       }
 
-      &.--cyan {
-        background-color: cyan;
-        color: #333333;
+      &.--blue {
+        background-color: #6464db; // Sample color setting
       }
 
-      &.--magenta {
-        background-color: magenta;
-        color: #333333;
+      &.--red {
+        background-color: #ff8080; // Sample color setting
       }
 
       &.--yellow {
-        background-color: yellow;
+        background-color: #ffff80; // Sample color setting
         color: #333333;
       }
     }
   }
 
   &:not(.--startOnMon) {
-    th, td {
+    td {
       &:first-child {
-        color: red;
+        color: $calendarSunColor;
       }
     
       &:last-child {
-        color: blue;
+        color: $calendarSatColor;
       }
     }
   }
 
   &.--startOnMon {
-    th, td {
+    td {
       &:nth-child(7) {
-        color: red;
+        color: $calendarSunColor;
       }
     
       &:nth-child(6) {
-        color: blue;
+        color: $calendarSatColor;
       }
     }
   }

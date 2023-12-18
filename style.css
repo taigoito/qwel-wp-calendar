@@ -13,11 +13,18 @@
   width: 100%;
   margin-bottom: 12px;
 }
+.calendar__current {
+  font-weight: 700;
+  font-size: 20px;
+  transform: scaleY(1.2);
+}
 .calendar__prev, .calendar__next {
   display: block;
   width: 96px;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 16px;
   text-align: center;
+  transform: scaleY(1.2);
 }
 .calendar__wrap {
   width: min(100%, 1152px);
@@ -32,18 +39,22 @@
   margin: 0 auto;
 }
 .calendar__view tr {
-  border-bottom: 1px solid #999999;
+  border-bottom: 2px solid #c4e4c4;
 }
 .calendar__view tr:first-child {
-  border-top: 1px solid #999999;
+  border-top: 2px solid #c4e4c4;
 }
 .calendar__view th, .calendar__view td {
+  box-sizing: border-box;
   width: clamp(108px, 14vw, 162px);
-  border-right: 1px solid #999999;
+  border-right: 2px solid #c4e4c4;
   text-align: center;
 }
 .calendar__view th:first-child, .calendar__view td:first-child {
-  border-left: 1px solid #999999;
+  border-left: 2px solid #c4e4c4;
+}
+.calendar__view th {
+  background-color: #c4e4c4;
 }
 .calendar__view td {
   height: clamp(128px, 12.8vw, 144px);
@@ -57,43 +68,45 @@
   line-height: 1.2;
 }
 .calendar__schedule.--holiday p:first-child {
-  color: red;
+  color: #ef8f8f;
 }
 .calendar__schedule p {
   display: inline-block;
-  width: calc(100% - 6px);
+  width: calc(100% - 12px);
   margin: 0;
   padding: 3px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
+.calendar__schedule p:first-child {
+  font-weight: 700;
+  text-align: right;
+}
 .calendar__schedule p:not(:first-child) {
   border-radius: 3px;
   background-color: #666666;
   color: #ffffff;
 }
-.calendar__schedule p.--cyan {
-  background-color: cyan;
-  color: #333333;
+.calendar__schedule p.--blue {
+  background-color: #6464db;
 }
-.calendar__schedule p.--magenta {
-  background-color: magenta;
-  color: #333333;
+.calendar__schedule p.--red {
+  background-color: #ff8080;
 }
 .calendar__schedule p.--yellow {
-  background-color: yellow;
+  background-color: #ffff80;
   color: #333333;
 }
-.calendar:not(.--startOnMon) th:first-child, .calendar:not(.--startOnMon) td:first-child {
-  color: red;
+.calendar:not(.--startOnMon) td:first-child {
+  color: #ef8f8f;
 }
-.calendar:not(.--startOnMon) th:last-child, .calendar:not(.--startOnMon) td:last-child {
-  color: blue;
+.calendar:not(.--startOnMon) td:last-child {
+  color: #8f8fef;
 }
-.calendar.--startOnMon th:nth-child(7), .calendar.--startOnMon td:nth-child(7) {
-  color: red;
+.calendar.--startOnMon td:nth-child(7) {
+  color: #ef8f8f;
 }
-.calendar.--startOnMon th:nth-child(6), .calendar.--startOnMon td:nth-child(6) {
-  color: blue;
+.calendar.--startOnMon td:nth-child(6) {
+  color: #8f8fef;
 }
