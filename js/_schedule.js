@@ -10,13 +10,12 @@ export default class Schedule extends Calendar {
   makeCalendar(year, month) {
     super.makeCalendar(year, month);
     this.fetch(this.options.url);
+    
   }
 
   async fetch(url) {
     const res = await fetch(`${url}`);
     const data = await res.json();
-
-    console.log(data);
 
     this.render(data);
 

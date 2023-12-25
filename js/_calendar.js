@@ -57,6 +57,7 @@ export default class Calendar {
 
     // 月送りの操作受付
     this._handleEvents();
+
   }
 
   async _fetchHolidays() {
@@ -88,6 +89,7 @@ export default class Calendar {
       }
       this.makeCalendar(this.year, this.month);
     });
+
   }
 
   async makeCalendar(year, month) {
@@ -97,6 +99,7 @@ export default class Calendar {
     this._makeCalendarHead();
     // Bodyに日にちを記載
     this._makeCalendarBody(year, month, await this.holidays);
+
   }
 
   _changeLabels(year, month) {
@@ -114,6 +117,7 @@ export default class Calendar {
       const nextYear = nextMonth > 0 ? year : year + 1;
       this._nextText.textContent = `${nextYear}${joint}${this._months[nextMonth]}`;
     }
+
   }
 
   _makeCalendarHead() {
@@ -128,6 +132,7 @@ export default class Calendar {
       tr.appendChild(th);
     }
     this._head.appendChild(tr);
+
   }
 
   _makeCalendarBody(year, month, holidays) {
@@ -178,9 +183,12 @@ export default class Calendar {
       }
       this._body.appendChild(tr);
     }
+
   }
 
   _parseDate(year, month, day) {
     return `${year}-${('00' + (month + 1)).slice(-2)}-${('00' + day).slice(-2)}`;
+
   }
+  
 }
