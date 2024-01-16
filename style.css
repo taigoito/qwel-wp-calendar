@@ -1,10 +1,6 @@
 /**
  * Calendar
  */
-.calendar {
-  width: min(100%, 1152px);
-  margin: 48px auto;
-}
 .calendar__control {
   display: flex;
   flex-flow: row wrap;
@@ -27,8 +23,8 @@
   transform: scaleY(1.2);
 }
 .calendar__wrap {
-  width: min(100%, 1152px);
-  margin: 0 auto;
+  width: 98vw;
+  margin: 0 calc(50% - 49vw);
   overflow: auto;
 }
 .calendar__view {

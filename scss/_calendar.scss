@@ -2,7 +2,6 @@
  * Calendar
  */
 
-$calendarWidth:      min(100%, 1152px); // (162*7)pxピッタリだと枠線が無くなる
 $calendarUnit:       clamp(108px, 14vw, 162px);
 $calendarRowHeight:  clamp(128px, 12.8vw, 144px); // 1000px時 12.8vw = 128px
 $calendarFontSize:   clamp(12px, 1.2vw, 14.4px); // 1000px時 1.2vw = 12px
@@ -12,9 +11,6 @@ $calendarSunColor:   #ef8f8f;
 $calendarSatColor:   #8f8fef;
 
 .calendar {
-  width: $calendarWidth;
-  margin: 48px auto;
-
   &__control {
     display: flex;
     flex-flow: row wrap;
@@ -40,8 +36,8 @@ $calendarSatColor:   #8f8fef;
   }
 
   &__wrap {
-    width: $calendarWidth;
-    margin: 0 auto;
+    width: 98vw; // 14vw * 7
+    margin: 0 calc(50% - 49vw);
     overflow: auto;
   }
 
