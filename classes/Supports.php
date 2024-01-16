@@ -62,11 +62,14 @@ trait Supports {
 
   public function insert_meta_boxes() {
     global $post;
+    // カレンダー開始日・終了日
     $post_date = get_the_date( 'Y-m-d', $post->ID );
     $start_date = get_post_meta( $post->ID, 'start_date', true );
     if ( !$start_date ) $start_date = $post_date;
     $end_date = get_post_meta( $post->ID, 'end_date', true );
     if ( !$end_date ) $end_date = $post_date;
+    // リンクURL
+    $url = get_post_meta( $post->ID, 'detail_url', true );
 ?>
   
 <form method="post" action="admin.php?page=site_settings">
@@ -74,6 +77,8 @@ trait Supports {
   <input id="startDate" type="date" name="startDate" value="<?php echo $start_date ?>">
   <label for="endDate">終了日: </label>
   <input id="endDate" type="date" name="endDate" value="<?php echo $end_date ?>">
+  <label for="endDate">URL: </label>
+  <input id="url" type="url" name="url" value="<?php echo $url ?>">
 </form>
   
 <?php
@@ -86,6 +91,9 @@ trait Supports {
     if ( isset( $_POST[ 'endDate' ] ) ) {
       update_post_meta( $post_id, 'end_date', $_POST[ 'endDate' ] );
     }
+    if ( isset( $_POST[ 'url' ] ) ) {
+      update_post_meta( $post_id, 'detail_url', $_POST[ 'url' ] );
+    }
   }
 
   public function register_calendar_attrs() {
@@ -97,10 +105,12 @@ trait Supports {
   public function get_calendar_attrs( $object ) {
     $start_date = get_post_meta( $object[ 'id' ], 'start_date', true );
     $end_date = get_post_meta( $object[ 'id' ], 'end_date', true );
+    $url = get_post_meta( $object[ 'id' ], 'detail_url', true );
     $colors = get_the_terms( $object[ 'id' ], 'color' );
     return [
       'start_date' => $start_date,
       'end_date'   => $end_date,
+      'detail_url' => $url,
       'colors'     => $colors
     ];
   }

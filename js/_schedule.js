@@ -30,6 +30,7 @@ export default class Schedule extends Calendar {
       //const date = dt.date.slice(0, 10);
       const startDate = new Date(dt.attributes['start_date']);
       const endDate = new Date(dt.attributes['end_date']);
+      const url = dt.attributes['detail_url'];
       const title = dt.title.rendered;
       //const content = dt.content.rendered;
       //const link = dt.link;
@@ -45,7 +46,14 @@ export default class Schedule extends Calendar {
           // カレンダーの内容を表示
           if (elem) {
             const p = document.createElement('p');
-            p.textContent = title;
+            if (url) {
+              const a = document.createElement('a');
+              a.textContent = title;
+              a.setAttribute('href', url);
+              p.appendChild(a);
+            } else {
+              p.textContent = title;
+            }
             if (colors && colors.length > 0) {
               colors.forEach((color) => {
                 p.classList.add(`--${color.slug}`);
