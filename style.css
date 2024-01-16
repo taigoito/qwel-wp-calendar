@@ -35,25 +35,27 @@
   margin: 0 auto;
 }
 .calendar__view tr {
-  border-bottom: 2px solid #c4e4c4;
+  border-bottom: 2px solid #cccccc;
 }
 .calendar__view tr:first-child {
-  border-top: 2px solid #c4e4c4;
+  border-top: 2px solid #cccccc;
 }
 .calendar__view th, .calendar__view td {
   box-sizing: border-box;
   width: clamp(108px, 14vw, 162px);
-  border-right: 2px solid #c4e4c4;
+  border-right: 2px solid #cccccc;
   text-align: center;
 }
 .calendar__view th:first-child, .calendar__view td:first-child {
-  border-left: 2px solid #c4e4c4;
+  border-left: 2px solid #cccccc;
 }
 .calendar__view th {
-  background-color: #c4e4c4;
+  background-color: #333333;
+  color: #ffffff;
 }
 .calendar__view td {
   height: clamp(128px, 12.8vw, 144px);
+  background-color: #ffffff;
 }
 .calendar__schedule {
   width: 100%;
