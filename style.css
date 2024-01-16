@@ -29,7 +29,7 @@
 }
 .calendar__view {
   table-layout: fixed;
-  width: calc(clamp(108px, 14vw, 128px) * 7);
+  width: calc(clamp(108px, 14vw - 2px, 128px) * 7);
   border-collapse: collapse;
   border-spacing: 0;
   margin: 0 auto;
@@ -42,7 +42,7 @@
 }
 .calendar__view th, .calendar__view td {
   box-sizing: border-box;
-  width: clamp(108px, 14vw, 128px);
+  width: clamp(108px, 14vw - 2px, 128px);
   border-right: 2px solid #cccccc;
   text-align: center;
 }
