@@ -29,7 +29,7 @@
 }
 .calendar__view {
   table-layout: fixed;
-  width: calc(clamp(108px, 14vw, 162px) * 7);
+  width: calc(clamp(108px, 14vw, 128px) * 7);
   border-collapse: collapse;
   border-spacing: 0;
   margin: 0 auto;
@@ -42,7 +42,7 @@
 }
 .calendar__view th, .calendar__view td {
   box-sizing: border-box;
-  width: clamp(108px, 14vw, 162px);
+  width: clamp(108px, 14vw, 128px);
   border-right: 2px solid #cccccc;
   text-align: center;
 }
@@ -54,14 +54,14 @@
   color: #ffffff;
 }
 .calendar__view td {
-  height: clamp(128px, 12.8vw, 144px);
+  height: 128px;
   background-color: #ffffff;
 }
 .calendar__schedule {
   width: 100%;
   height: 100%;
   padding: 3px;
-  font-size: clamp(12px, 1.2vw, 14.4px);
+  font-size: 12px;
   text-align: left;
   line-height: 1.2;
 }

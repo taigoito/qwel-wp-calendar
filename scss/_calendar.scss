@@ -2,9 +2,9 @@
  * Calendar
  */
 
-$calendarUnit:       clamp(108px, 14vw, 162px);
-$calendarRowHeight:  clamp(128px, 12.8vw, 144px); // 1000px時 12.8vw = 128px
-$calendarFontSize:   clamp(12px, 1.2vw, 14.4px); // 1000px時 1.2vw = 12px
+$calendarUnit:       clamp(108px, 14vw, 128px); // 900 / 7 の近似値
+$calendarRowHeight:  128px;
+$calendarFontSize:   12px;
 $calendarBaseColor:  #333333;
 $calendarBorder:     2px solid #cccccc;
 $calendarSunColor:   #ef8f8f;
