@@ -8,18 +8,19 @@ trait Supports {
   }
 
   public function register_calendar_as_post_type() {
+    $name = '予定';
     register_post_type( 'calendar', [
-        'labels' => [
-          'name'           => '予定',
-          'singular_name'  => '予定',
-          'menu_name'      => 'カレンダー',
-          'all_items'      => '予定一覧',
-          'new_item'       => '新規予定',
-          'add_new_item'   => '新規予定を追加',
-          'edit_item'      => '予定を編集',
-          'view_item'      => '予定を表示',
-          'search_items'   => '予定を検索'
-        ],
+      'labels' => [
+        'name'           => $name,
+        'singular_name'  => $name,
+        'menu_name'      => 'カレンダー',
+        'all_items'      => $name . '一覧',
+        'new_item'       => '新規' . $name,
+        'add_new_item'   => '新規' . $name . 'を追加',
+        'edit_item'      => $name . 'を編集',
+        'view_item'      => $name . 'を表示',
+        'search_items'   => $name . 'を検索'
+      ],
         'public'         => true,
         'has_archive'    => false,
         'menu_icon'      => 'dashicons-calendar-alt',
