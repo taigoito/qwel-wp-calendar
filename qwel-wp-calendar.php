@@ -2,7 +2,7 @@
 /*
 Plugin Name: Qwel WP Calendar
 Description: This is a simple calendar plugin.
-Version: 1.0
+Version: 1.1
 Requires PHP: 7.4
 Author: Taigo Ito
 Author URI: https://qwel.design/

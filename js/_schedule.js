@@ -16,6 +16,8 @@ export default class Schedule extends Calendar {
   async fetch(url) {
     const res = await fetch(`${url}`);
     const data = await res.json();
+    
+    //console.log(data);
 
     this.render(data);
 

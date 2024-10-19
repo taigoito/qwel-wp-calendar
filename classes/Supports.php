@@ -15,6 +15,9 @@ trait Supports {
     
     // REST API にて表示
     add_action( 'rest_api_init', [ $this, 'register_calendar_attrs' ] );
+
+    // 取得記事数を1000件
+    add_filter('rest_calendar_collection_params', [ $this, 'change_calendar_limit' ], 10, 2 );
   }
 
   public function register_calendar_as_post_type() {
@@ -114,6 +117,11 @@ trait Supports {
       'detail_url' => $url,
       'colors'     => $colors
     ];
+  }
+
+  public function change_calendar_limit( $params, $post_type ) {
+    $params[ 'per_page' ][ 'maximum' ] = 1000;
+    return $params;
   }
 
 }
